@@ -109,7 +109,34 @@ def get_dealerships(request):
 # def get_dealer_details(request, dealer_id):
 # ...
 
+def get_dealer_details(request, dealer_id):
+    context = {}
+    if request.method == "GET":
+        url = 'https://eda3f908.eu-gb.apigw.appdomain.cloud/api/review'
+        reviews = get_dealer_reviews_from_cf(url, dealer_id=dealer_id)
+        context = {
+            "reviews":  reviews,
+            "dealer_id": dealer_id
+        }
+        # for every review, convert the string purchase into a boolean
+        for review in reviews:
+            review.purchase = review.purchase == "True"
+        return render(request, 'djangoapp/dealer_details.html', context)
+
 # Create a `add_review` view to submit a review
 # def add_review(request, dealer_id):
 # ...
+
+
+def add_review(request, dealer_id):
+    context = {}
+    review = dict()
+    if request.method == "GET":
+        # Get dealer details from the API
+        context = {
+            "cars": CarModel.objects.all(),
+            "dealer_id": dealer_id
+        }
+        return render(request, 'djangoapp/add_review.html', context)
+
 
