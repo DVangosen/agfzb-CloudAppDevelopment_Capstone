@@ -89,7 +89,7 @@ def registration_request(request):
 def get_dealerships(request):
     if request.method == "GET":
         context = {}
-        url = "https://eda3f908.eu-gb.apigw.appdomain.cloud/api/dealership"
+        url = "https://6a2fe4be.us-south.apigw.appdomain.cloud/api/dealership"
         # Get dealers from the Cloudant DB
         dealerships = get_dealers_from_cf(url)
         context['dealer_list'] = dealerships
@@ -103,7 +103,7 @@ def get_dealerships(request):
 def get_dealer_details(request, dealer_id):
     context = {}
     if request.method == "GET":
-        url = 'https://eda3f908.eu-gb.apigw.appdomain.cloud/api/review'
+        url = 'https://6a2fe4be.us-south.apigw.appdomain.cloud/api/review'
         reviews = get_dealer_reviews_from_cf(url, dealer_id=dealer_id)
         context = {
             "reviews":  reviews,
@@ -143,7 +143,7 @@ def add_review(request, dealer_id):
             review['review']['id'] = userr.id
             review['review']["name"] = userr.first_name + " " + userr.last_name
 
-            url = "https://eda3f908.eu-gb.apigw.appdomain.cloud/api/review"
+            url = "https://6a2fe4be.us-south.apigw.appdomain.cloud/api/review"
 
             #json_payload = {}
             #json_payload['review'] = review
