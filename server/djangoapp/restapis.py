@@ -143,7 +143,7 @@ def get_dealer_reviews_from_cf(url, dealer_id):
 # Create an `analyze_review_sentiments` method to call Watson NLU and analyze text
 def analyze_review_sentiments(review):
     api_key = "KL7xrV2Xjo0HI2HVhZ2jEWbu1nuGOSuj3K_0r_Dhp2Kw"
-    url = "https://api.eu-gb.natural-language-understanding.watson.cloud.ibm.com/instances/8422468c-8570-4692-840a-a2ec5a60f185"
+    url = "https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/instances/b674241e-f785-4bcf-af3f-9aac6852c566"
     text = review
     version = '2020-08-01'
     authenticator = IAMAuthenticator(api_key)
